@@ -1,0 +1,6 @@
+# Cache
+__pycache__/
+
+# Data files
+lfm-b2/
+fma_large.zip
