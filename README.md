@@ -4,6 +4,8 @@
 
 [Checkpoint 1](checkpoint_1.md)
 
+[Checkpoint 2](checkpoint_2.md)
+
 ## Contributing
 
 Проект использует [контейнеры разработки](https://containers.dev/), что позволяет всем членам команды иметь идентичную среду разработки. Чтобы работать с проектом желательно:

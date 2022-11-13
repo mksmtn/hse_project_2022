@@ -3,4 +3,5 @@ __pycache__/
 
 # Data files
 lfm-b2/
+fma_metadata/
 fma_large.zip
