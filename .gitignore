@@ -1,7 +1,11 @@
 # Cache
 __pycache__/
+.ipynb_checkpoints/
 
 # Data files
 lfm-b2/
 fma_metadata/
 fma_large.zip
+
+# Binaries
+pickle/

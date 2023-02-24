@@ -13,6 +13,7 @@ tqdm = "*"
 sklearn = "*"
 scipy = "*"
 dask-ml = "*"
+matplotlib = "*"
 
 [dev-packages]
 
