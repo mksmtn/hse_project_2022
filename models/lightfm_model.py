@@ -3,6 +3,7 @@ from lightfm.evaluation import auc_score, precision_at_k, recall_at_k, reciproca
 from lightfm.cross_validation import random_train_test_split
 from lightfm import LightFM
 import dask.dataframe as dd
+import pandas as pd
 
 from models.abstract_model import AbstractModel
 
