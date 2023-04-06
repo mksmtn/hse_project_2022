@@ -9,3 +9,6 @@ fma_large.zip
 
 # Binaries
 pickle/
+
+# virtual env
+.venv
