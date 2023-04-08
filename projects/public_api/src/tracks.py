@@ -1,4 +1,4 @@
-from init import track_index_map, tracks
+from src.init import track_index_map, tracks
 
 def find_track_by_id(track_index: int):
     track_id = track_index_map[track_index]

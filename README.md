@@ -15,6 +15,8 @@
 
 [Checkpoint 2](checkpoint_2.md)
 
+[API](projects/public_api/README.md)
+
 ## Authors
 
 - Нуруллин Булат
