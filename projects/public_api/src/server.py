@@ -15,7 +15,7 @@ def read_root():
 @router.get('/users/{user_id}/predictions')
 def read_predictions_for_user(user_id: int, n: int = 5):
     if n > 100:
-        raise ValueError('Fuck you')
+        raise ValueError('That, sir, would be too bold.')
     logger.info('Getting %d predictions for user %s', n, user_id)
     user_predictions = predictions.getrow(user_id)
     every_item = list(zip(user_predictions.indices, user_predictions.data))
