@@ -6,9 +6,7 @@ __pycache__/
 lfm-b2/
 fma_metadata/
 fma_large.zip
-
-# Binaries
-pickle/
+pickle.zip
 
 # virtual env
 .venv
