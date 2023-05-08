@@ -17,7 +17,9 @@ class LightfmModel(AbstractModel):
         super().__init__(hyperparams, name)
         self.model = LightFM(**self.hyperparams)
 
-    def preprocess_data(self, data: pd.DataFrame, test_size=0.2, random_state=42) -> None:
+    def preprocess_data(
+        self, data: pd.DataFrame, test_size=0.2, random_state=42
+    ) -> None:
         """
         Split data on train and test and create interactions and weights
         :param data: DataFrame with columns user_id, item_id, rating
@@ -26,7 +28,9 @@ class LightfmModel(AbstractModel):
         """
         dataset = Dataset()
         dataset.fit(data.user_id, data.track_id)
-        (interactions, weights) = dataset.build_interactions(data.itertuples(False, None))
+        (interactions, weights) = dataset.build_interactions(
+            data.itertuples(False, None)
+        )
         (train_interactions, test_interactions) = random_train_test_split(
             interactions,
             test_percentage=test_size,
@@ -39,19 +43,20 @@ class LightfmModel(AbstractModel):
             random_state=random_state,
         )
 
-        self.data['interactions'] = {'train': train_interactions,
-                                     'test': test_interactions}
+        self.data["interactions"] = {
+            "train": train_interactions,
+            "test": test_interactions,
+        }
 
-        self.data['weights'] = {'train': train_weights,
-                                'test': test_weights}
+        self.data["weights"] = {"train": train_weights, "test": test_weights}
 
     def fit(self) -> None:
         """
         Fit train data
         """
         self.model.fit(
-            self.data['interactions']['train'],
-            sample_weight=self.data['weights']['train'],
+            self.data["interactions"]["train"],
+            sample_weight=self.data["weights"]["train"],
             epochs=50,
             num_threads=12,
             verbose=True,
@@ -62,35 +67,36 @@ class LightfmModel(AbstractModel):
         Calculate metrics available for the Lightfm model
         :return: DataFrame with columns metric, value
         """
-        return pd.DataFrame({'metric': ['precision@10',
-                                        'recall@10',
-                                        'auc_score',
-                                        'reciprocal_rank'],
-                             'value': [precision_at_k(
-                                             self.model,
-                                             self.data['interactions']['test'],
-                                             self.data['interactions']['train'],
-                                             k=10,
-                                             num_threads=12,
-                                         ).mean(),
-                                       recall_at_k(
-                                           self.model,
-                                           self.data['interactions']['test'],
-                                           self.data['interactions']['train'],
-                                           k=10,
-                                           num_threads=12,
-                                       ).mean(),
-                                       auc_score(
-                                           self.model,
-                                           self.data['interactions']['test'],
-                                           self.data['interactions']['train'],
-                                           num_threads=12,
-                                       ).mean(),
-                                       reciprocal_rank(
-                                           self.model,
-                                           self.data['interactions']['test'],
-                                           self.data['interactions']['train'],
-                                           num_threads=12,
-                                       ).mean()
-                                       ]
-                             })
+        return pd.DataFrame(
+            {
+                "metric": ["precision@10", "recall@10", "auc_score", "reciprocal_rank"],
+                "value": [
+                    precision_at_k(
+                        self.model,
+                        self.data["interactions"]["test"],
+                        self.data["interactions"]["train"],
+                        k=10,
+                        num_threads=12,
+                    ).mean(),
+                    recall_at_k(
+                        self.model,
+                        self.data["interactions"]["test"],
+                        self.data["interactions"]["train"],
+                        k=10,
+                        num_threads=12,
+                    ).mean(),
+                    auc_score(
+                        self.model,
+                        self.data["interactions"]["test"],
+                        self.data["interactions"]["train"],
+                        num_threads=12,
+                    ).mean(),
+                    reciprocal_rank(
+                        self.model,
+                        self.data["interactions"]["test"],
+                        self.data["interactions"]["train"],
+                        num_threads=12,
+                    ).mean(),
+                ],
+            }
+        )

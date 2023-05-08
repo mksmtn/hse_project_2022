@@ -7,13 +7,16 @@ class AbstractModel(ABC):
     Abstract class to reduce operations performed on all models
     and define the structure of other models.
     """
+
     def __init__(self, hyperparams: dict, name: str) -> None:
         self.hyperparams = hyperparams
         self.name = name
         self.data = dict()
 
     @abstractmethod
-    def preprocess_data(self, data: pd.DataFrame, test_size=0.2, random_state=42) -> None:
+    def preprocess_data(
+        self, data: pd.DataFrame, test_size=0.2, random_state=42
+    ) -> None:
         """
         Split data on train and test, build CF matrix or perform other transformation
         :param data: DataFrame with columns user_id, item_id, count or rating
