@@ -16,6 +16,8 @@ docker build -t hse_project_2022_public_api .
 docker run -p 127.0.0.1:8080:80 hse_project_2022_public_api
 ```
 
+Wait till you see `Application startup complete` in your terminal. Then you can open [http://localhost:8080/users/1/predictions](http://localhost:8080/users/1/predictions) in your browser.
+
 ## Contributing
 
 First, change directory to `projects/public_api`:
