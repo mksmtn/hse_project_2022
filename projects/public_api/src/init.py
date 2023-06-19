@@ -4,10 +4,6 @@ import csv
 from src.config import tracks_path, pickle_directory_path
 
 def _init():
-    model = pickle.load(open(f'{pickle_directory_path}/model.pickle', 'rb'))
-    user_features = pickle.load(open(f'{pickle_directory_path}/user_features.pickle', 'rb'))
-    test_interactions = pickle.load(open(f'{pickle_directory_path}/test_interactions.pickle', 'rb'))
-    train_interactions = pickle.load(open(f'{pickle_directory_path}/train_interactions.pickle', 'rb'))
     dataset = pickle.load(open(f'{pickle_directory_path}/dataset.pickle', 'rb'))
     predictions = pickle.load(open(f'{pickle_directory_path}/predictions.pickle', 'rb'))
     user_id_map, user_feature_map, item_id_map, _ = dataset.mapping()
