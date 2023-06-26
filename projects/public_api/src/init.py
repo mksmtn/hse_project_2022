@@ -9,6 +9,6 @@ def _init():
     user_id_map, user_feature_map, item_id_map, _ = dataset.mapping()
     track_index_map = {v: k for k, v in  item_id_map.items()}
     tracks = pd.read_csv(tracks_path, sep='\t', na_values='', na_filter=False, error_bad_lines=False, quoting=csv.QUOTE_NONE)
-    return predictions, user_id_map, track_index_map, tracks
+    return predictions, user_id_map, track_index_map, tracks, dataset
 
-predictions, user_id_map, track_index_map, tracks = _init()
+predictions, user_id_map, track_index_map, tracks, dataset = _init()
